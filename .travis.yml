@@ -37,6 +37,7 @@ before_script:
   - aria2c -x16 -s8 --console-log-level=error --summary-interval=0 "${TWRP_SOURCE1}" || wget -q --show-progress --progress=bar:force "${TWRP_SOURCE1}"
   - aria2c -x16 -s8 --console-log-level=error --summary-interval=0 "${TWRP_SOURCE2}" || wget -q --show-progress --progress=bar:force "${TWRP_SOURCE2}"
   - aria2c -x16 -s8 --console-log-level=error --summary-interval=0 "${TWRP_SOURCE3}" || wget -q --show-progress --progress=bar:force "${TWRP_SOURCE3}"
+  - cat MinimalOmniRecovery-twrp-*.*-norepo-2021*.tzst.ab MinimalOmniRecovery-twrp-*.*-norepo-2021*.tzst.ac >> MinimalOmniRecovery-twrp-*.*-norepo-2021*.tzst.aa
   - tar --zstd -xf MinimalOmniRecovery-twrp-*.*-norepo-2021*.tzst.aa --directory $HOME/twrp/ && rm MinimalOmniRecovery*.tzst.*
 script:
   # Replace your ${_USERNAME_}, ${_REPO_SLUG_}, ${_VENDORNAME_}, ${_CODENAME_}
