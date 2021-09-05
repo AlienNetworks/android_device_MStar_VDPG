@@ -2,6 +2,7 @@ os: linux
 dist: focal
 group: edge
 language: generic
+sudo: required
 git:
   depth: 1
 addons:
@@ -44,14 +45,11 @@ script:
   - cd $HOME/twrp/ && git clone https://github.com/AlienNetworks/android_device_MStar_VDPG.git device/MStar/sugarcane
   - rm -rf bootable/recovery && git clone https://github.com/omnirom/android_bootable_recovery -b android-8.1 --depth 1 bootable/recovery
   - |
-    id -u
-    id -g
-    sudo chown -R $(id -u):$(id -g) 
     docker run --rm -i -e USER_ID=$(id -u) -e GROUP_ID=$(id -g) -v "$(pwd):/home/builder/twrp/:rw,z" -v "${HOME}/.ccache:/srv/ccache:rw,z" fr3akyphantom/droid-builder bash << EOF
     cd /home/builder/twrp/
     source build/envsetup.sh
     # Choose build flavor as "eng" or "userdebug"
-    BUILD_FLAVOR="userdebug"
+    BUILD_FLAVOR="eng"
     lunch omni_sugarcane-${BUILD_FLAVOR}
     make -j$(nproc --all) recoveryimage
     exit
