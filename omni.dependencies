@@ -1,0 +1,8 @@
+[
+  {
+    "remote":"github",
+    "repository": "AlienNetworks/android_device_MStar_VDPG",
+    "target_path": "device/MStar/sugarcane",
+    "revision":"android-8.0"
+  }
+]

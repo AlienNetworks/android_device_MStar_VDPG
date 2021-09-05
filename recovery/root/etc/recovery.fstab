@@ -1,0 +1,29 @@
+# Mount point		FStype					Device													Flags
+
+/system              ext4        /dev/block/platform/mstar_mci.0/by-name/system               /dev/block/mmcblk0p12     flags=display="System";backup=1;canbewiped;wipeingui
+/system              ext4        /dev/block/platform/mstar_mci.0/by-name/system               /dev/block/mmcblk0p12     flags=display="System";backup=1;canbewiped;wipeingui
+/data                ext4        /dev/block/platform/mstar_mci.0/by-name/userdata             /dev/block/mmcblk0p13     flags=length=-16384;display="Data";backup=1;canbewiped;wipeingui;wipeduringfactoryreset;settingsstorage
+/cache               ext4        /dev/block/platform/mstar_mci.0/by-name/cache                /dev/block/mmcblk0p14
+/vendor              ext4        /dev/block/platform/mstar_mci.0/by-name/vendor               /dev/block/mmcblk0p15
+/tvservice           ext4        /dev/block/platform/mstar_mci.0/by-name/tvservice            /dev/block/mmcblk0p16
+/tvconfig            ext4        /dev/block/platform/mstar_mci.0/by-name/tvconfig             /dev/block/mmcblk0p17
+/tvdatabase          ext4        /dev/block/platform/mstar_mci.0/by-name/tvdatabase           /dev/block/mmcblk0p18
+/tvcustomer          ext4        /dev/block/platform/mstar_mci.0/by-name/tvcustomer           /dev/block/mmcblk0p19
+/tvcertificate       ext4        /dev/block/platform/mstar_mci.0/by-name/tvcertificate        /dev/block/mmcblk0p20
+/boot1               emmc        /dev/block/mmcblk0boot0                                      defaults
+/boot2               emmc        /dev/block/mmcblk0boot1                                      defaults
+/MBOOT               emmc        /dev/block/platform/mstar_mci.0/by-name/MBOOT                /dev/block/mmcblk0p1
+/MPOOL               emmc        /dev/block/platform/mstar_mci.0/by-name/MPOOL                /dev/block/mmcblk0p2
+/misc                emmc        /dev/block/platform/mstar_mci.0/by-name/misc                 /dev/block/mmcblk0p3
+/recovery            emmc        /dev/block/platform/mstar_mci.0/by-name/recovery             /dev/block/mmcblk0p4     flags=display="Recovery";backup=1;flashimg=1
+/boot                emmc        /dev/block/platform/mstar_mci.0/by-name/boot                 /dev/block/mmcblk0p5     flags=display="Boot";backup=1;flashimg=1
+/tee                 emmc        /dev/block/platform/mstar_mci.0/by-name/tee                  /dev/block/mmcblk0p28
+/RTPM                emmc        /dev/block/platform/mstar_mci.0/by-name/RTPM                 /dev/block/mmcblk0p8
+/dtb                 emmc        /dev/block/platform/mstar_mci.0/by-name/dtb                  /dev/block/mmcblk0p9
+/optee               emmc        /dev/block/platform/mstar_mci.0/by-name/optee                /dev/block/mmcblk0p6
+/armfw               emmc        /dev/block/platform/mstar_mci.0/by-name/armfw                /dev/block/mmcblk0p7
+auto                 auto        /devices/platform/mstar_fcie*                                defaults                 voldmanaged=sdcard:auto;noemulatedsd
+auto                 auto        /devices/platform/mstar_sdio*                                defaults                 voldmanaged=sdcard:auto;noemulatedsd
+auto                 auto        /devices/Mstar-ehci*                                         defaults                 voldmanaged=usb:auto
+auto                 auto        /devices/Mstar-xhci*                                         defaults                 voldmanaged=usb:auto
+

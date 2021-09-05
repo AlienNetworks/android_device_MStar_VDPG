@@ -1,0 +1,27 @@
+on init
+    mkdir /data/property
+    # sdcard/usb mount points
+    mkdir /mnt
+    mkdir /mnt/sdcard
+    mkdir /mnt/usb
+    mkdir /mnt/usb/sda1
+    mkdir /mnt/usb/mmcblka1
+    mkdir /storage
+
+#for keypad
+service virtualkeypad /sbin/virtualkeypad
+    oneshot
+    seclabel u:r:virtualkeypad:s0
+
+on fs
+    mkdir /tvconfig
+    mount ext4 /dev/block/platform/mstar_mci.0/by-name/tvconfig /tvconfig wait ro noatime block_validity nodiscard data=ordered journal_checksum
+
+    # restore security contexts here to label those device nodes created by utopia
+    restorecon /dev/gflip
+    restorecon /dev/msmailbox
+    restorecon /dev/system
+
+# Set watchdog timer to 30 seconds and pet it every 10 seconds to get a 20 second margin
+#service watchdogd /sbin/watchdogd 10 20
+#    class core
