@@ -30,12 +30,10 @@ script:
   - sudo chown -R 1000:1000 $HOME/twrp
   - sudo chmod -R 775 $HOME/twrp
   - sudo chmod -R g+s $HOME/twrp
+  - sudo groupadd -g 1000 builder
   - sudo adduser travis 1000
   - |
     docker run --privileged --rm -i -v "$(pwd):/home/builder/twrp/:rw,z" -v "${HOME}/.ccache:/srv/ccache:rw" fr3akyphantom/droid-builder:focal bash << EOF
-    whoami
-    cat /etc/group
-    cat /etc/passwd
     cd /home/builder/twrp/
     export ALLOW_MISSING_DEPENDENCIES=true
     source build/envsetup.sh
