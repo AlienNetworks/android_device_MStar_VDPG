@@ -41,6 +41,7 @@ BOARD_KERNEL_CMDLINE := buildvariant=userdebug
 BOARD_KERNEL_BASE := 0x20278000
 BOARD_KERNEL_PAGESIZE := 2048
 BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x01008000 --tags_offset 0x00008100
+BOARD_KERNEL_IMAGE_NAME := zImage-dtb
 
 # Set FSTAB
 TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/recovery/root/etc/recovery.fstab           
