@@ -4,13 +4,15 @@ language: generic
 git:
   depth: 1
 addons:
-  apt:
-    update:
-      - true
-    packages:
-      - aria2
-      - zstd
-      - xz-utils
+  # apt:
+    # update:
+      # - true
+    # packages:
+      # - aria2
+      # - zstd
+      # - xz-utils
+  snaps:
+    - git-repo
 services:
   - docker
 before_install:
@@ -23,7 +25,6 @@ before_script:
   - git clone https://github.com/AlienNetworks/android_device_MStar_VDPG.git device/MStar/sugarcane
   - sudo chown -R 1000:1000 $HOME/twrp && sudo chmod -R 775 $HOME/twrp && sudo chmod -R g+s $HOME/twrp && sudo groupadd -g 1000 builder && sudo adduser travis builder  
 script:
-
   - |
     docker run --privileged --rm -i -v "$(pwd):/home/builder/twrp/:rw,z" -v "${HOME}/.ccache:/srv/ccache:rw" fr3akyphantom/droid-builder:focal bash << EOF
     cd /home/builder/twrp/
