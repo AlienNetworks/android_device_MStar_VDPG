@@ -21,6 +21,7 @@ script:
   - |
     docker run --privileged --rm -i -v "$(pwd):/home/builder/twrp/:rw,z" -v "${HOME}/.ccache:/srv/ccache:rw" fr3akyphantom/droid-builder:focal bash << EOF
     cd /home/builder/twrp/
+    export USE_CCACHE=0
     export ALLOW_MISSING_DEPENDENCIES=true
     source build/envsetup.sh
     lunch omni_sugarcane-userdebug
