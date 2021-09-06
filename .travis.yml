@@ -18,8 +18,8 @@ before_install:
   - docker pull fr3akyphantom/droid-builder:focal
 before_script:
   - cd $HOME && mkdir twrp
-  - cd $HOME/twrp/ && git init --depth=1 -u git://github.com/minimal-manifest-twrp/platform_manifest_twrp_omni.git -b twrp-8.1
-  - git repo sync
+  - cd $HOME/twrp/ && repo init --depth=1 -u git://github.com/minimal-manifest-twrp/platform_manifest_twrp_omni.git -b twrp-8.1
+  - repo sync
   - git clone https://github.com/AlienNetworks/android_device_MStar_VDPG.git device/MStar/sugarcane
   - sudo chown -R 1000:1000 $HOME/twrp && sudo chmod -R 775 $HOME/twrp && sudo chmod -R g+s $HOME/twrp && sudo groupadd -g 1000 builder && sudo adduser travis builder  
 script:
