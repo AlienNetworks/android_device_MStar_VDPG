@@ -12,8 +12,8 @@ before_script:
   - mkdir -p ~/.bin && PATH="${HOME}/.bin:${PATH}" && curl https://storage.googleapis.com/git-repo-downloads/repo > ~/.bin/repo && chmod a+rx ~/.bin/repo
   - mkdir ~/twrp && cd ~/twrp
   - repo init --depth=1 -u git://github.com/minimal-manifest-twrp/platform_manifest_twrp_omni.git -b twrp-8.1
-  - repo sync
   - echo '<project path="device/MStar/sugarcane" name="AlienNetworks/android_device_MStar_VDPG" remote="github" revision="main" />' >> ./.repo/manifest.xml
+  - repo sync
   - sudo chown -R 1000:1000 $HOME/twrp && sudo chmod -R 775 $HOME/twrp && sudo chmod -R g+s $HOME/twrp && sudo groupadd -g 1000 builder && sudo adduser travis builder  
 script:
   - |
