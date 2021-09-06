@@ -24,7 +24,7 @@ script:
     cd /home/builder/twrp/
     export ALLOW_MISSING_DEPENDENCIES=true
     source build/envsetup.sh
-    lunch omni_sugarcane-eng
+    lunch omni_sugarcane-userdebug
     mka recoveryimage
     exit
     EOF
