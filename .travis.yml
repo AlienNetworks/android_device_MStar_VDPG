@@ -33,7 +33,8 @@ script:
     source build/envsetup.sh
     # Choose build flavor as "eng" or "userdebug"
     BUILD_FLAVOR="userdebug"
-    lunch omni_sugarcane-${BUILD_FLAVOR}
+    # lunch omni_sugarca# ne-${BUILD_FLAVOR}
+    lunch omni_sugarcane
     make -j$(nproc --all) recoveryimage
     exit
     EOF
