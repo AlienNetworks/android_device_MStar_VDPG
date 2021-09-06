@@ -34,7 +34,7 @@ script:
     # Choose build flavor as "eng" or "userdebug"
     BUILD_FLAVOR="userdebug"
     # lunch omni_sugarca# ne-${BUILD_FLAVOR}
-    lunch omni_sugarcane
+    lunch omni_sugarcane.mk
     make -j$(nproc --all) recoveryimage
     exit
     EOF
