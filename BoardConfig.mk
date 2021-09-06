@@ -1,3 +1,4 @@
+LOCAL_PATH := device/MStar/sugarcane
 
 TARGET_BOARD_PLATFORM := m7221               
 TARGET_NO_BOOTLOADER := true
