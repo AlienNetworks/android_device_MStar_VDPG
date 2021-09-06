@@ -19,6 +19,7 @@ BOARD_CHARGER_SHOW_PERCENTAGE := true
 RECOVERY_SDCARD_ON_DATA := true               # Optional: If /sdcard partition is emulated on /data partition 
 
 # TWRP stuff
+TW_EXCLUDE_TWRPAPP := true
 TW_EXCLUDE_SUPERSU := true                    # true/false: Add SuperSU or not
 TW_INCLUDE_CRYPTO := true                     # true/false: Add Data Encryption Support or not
 TW_INPUT_BLACKLIST := "hbtp_vm"               # Optional: Disables virtual mouse
@@ -36,8 +37,7 @@ TW_EXTRA_LANGUAGES := false
 
 # Kernel
 TARGET_IS_64_BIT := true            
-TARGET_PREBUILT_KERNEL := $(LOCAL_PATH)/prebuilt/kernel
-TARGET_PREBUILT_RECOVERY_KERNEL := $(LOCAL_PATH)/prebuilt/kernel
+TARGET_PREBUILT_KERNEL := $(LOCAL_PATH)/prebuilt/Image.gz-dtb
 BOARD_KERNEL_CMDLINE := buildvariant=userdebug
 BOARD_KERNEL_BASE := 0x20278000
 BOARD_KERNEL_PAGESIZE := 2048
