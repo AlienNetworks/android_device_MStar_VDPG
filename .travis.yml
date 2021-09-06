@@ -3,31 +3,17 @@ dist: focal
 language: generic
 git:
   depth: 1
-addons:
-  # apt:
-    # update:
-      # - true
-    # packages:
-      # - aria2
-      # - zstd
-      # - xz-utils
-  # snaps:
-    # - git-repo
 services:
   - docker
 before_install:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin 2>/dev/null
   - docker pull fr3akyphantom/droid-builder:focal
 before_script:
-  - mkdir -p ~/.bin
-  - PATH="${HOME}/.bin:${PATH}"
-  - curl https://storage.googleapis.com/git-repo-downloads/repo > ~/.bin/repo
-  - chmod a+rx ~/.bin/repo
-  - cd $HOME && mkdir twrp
-  - cd $HOME/twrp/
+  - mkdir -p ~/.bin && PATH="${HOME}/.bin:${PATH}" && curl https://storage.googleapis.com/git-repo-downloads/repo > ~/.bin/repo && chmod a+rx ~/.bin/repo
+  - mkdir ~/twrp && cd ~/twrp
   - repo init --depth=1 -u git://github.com/minimal-manifest-twrp/platform_manifest_twrp_omni.git -b twrp-8.1
   - repo sync
-  - git clone https://github.com/AlienNetworks/android_device_MStar_VDPG.git device/MStar/sugarcane
+  # - git clone https://github.com/AlienNetworks/android_device_MStar_VDPG.git device/MStar/sugarcane
   - sudo chown -R 1000:1000 $HOME/twrp && sudo chmod -R 775 $HOME/twrp && sudo chmod -R g+s $HOME/twrp && sudo groupadd -g 1000 builder && sudo adduser travis builder  
 script:
   - |
