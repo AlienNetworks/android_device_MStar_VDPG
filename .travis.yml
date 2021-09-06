@@ -28,8 +28,8 @@ script:
   - cd $HOME/twrp/ && git clone https://github.com/AlienNetworks/android_device_MStar_VDPG.git device/MStar/sugarcane
   - rm -rf bootable/recovery && git clone https://github.com/omnirom/android_bootable_recovery -b android-8.1 --depth 1 bootable/recovery
   - |
-    sudo chown -R travis:travis ../twrp
-    docker run --rm -i -v "$(pwd):/home/builder/twrp/:rw,z" -v "${HOME}/.ccache:/srv/ccache:rw" fr3akyphantom/droid-builder:focal bash << EOF
+    sudo chown -R travis:travis $HOME/twrp
+    docker run --rm -i --user travis:travis -v "$(pwd):/home/builder/twrp/:rw,z" -v "${HOME}/.ccache:/srv/ccache:rw" fr3akyphantom/droid-builder:focal bash << EOF
     cd /home/builder/twrp/
     export ALLOW_MISSING_DEPENDENCIES=true
     source build/envsetup.sh
