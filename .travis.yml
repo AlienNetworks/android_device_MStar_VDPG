@@ -11,14 +11,18 @@ addons:
       # - aria2
       # - zstd
       # - xz-utils
-  snaps:
-    - git-repo
+  # snaps:
+    # - git-repo
 services:
   - docker
 before_install:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin 2>/dev/null
   - docker pull fr3akyphantom/droid-builder:focal
 before_script:
+  - mkdir -p ~/.bin
+  - PATH="${HOME}/.bin:${PATH}"
+  - curl https://storage.googleapis.com/git-repo-downloads/repo > ~/.bin/repo
+  - chmod a+rx ~/.bin/repo
   - cd $HOME && mkdir twrp
   - cd $HOME/twrp/
   - repo init --depth=1 -u git://github.com/minimal-manifest-twrp/platform_manifest_twrp_omni.git -b twrp-8.1
