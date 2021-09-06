@@ -1,4 +1,4 @@
-# LOCAL_PATH := device/MStar/sugarcane
+LOCAL_PATH := device/MStar/sugarcane
 
 TARGET_BOARD_PLATFORM := m7221               # From ro.mediatek.platform, but lowercase value
 TARGET_NO_BOOTLOADER := true
