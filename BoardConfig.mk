@@ -37,10 +37,10 @@ TW_SCREEN_BLANK_ON_BOOT := true
 # 1011  Set TARGET_SCREEN_WIDTH and TARGET_SCREEN_HEIGHT to automatically select
 # 1012  an appropriate theme, or set TW_THEME to one of the following:
 # 1013    landscape_hdpi landscape_mdpi portrait_hdpi portrait_mdpi watch_mdpi
-DEVICE_RESOLUTION := 1280x720                 # The Resolution of your Device
-TARGET_SCREEN_WIDTH := 1280                     # The width
-TARGET_SCREEN_HEIGHT := 720                     # The height
-TARGET_RECOVERY_PIXEL_FORMAT := "RGBA_8888"
+# DEVICE_RESOLUTION := 1280x720                 # The Resolution of your Device
+TARGET_SCREEN_WIDTH := 1920
+TARGET_SCREEN_HEIGHT := 1200
+# TARGET_RECOVERY_PIXEL_FORMAT := "RGBA_8888"
 # Set the Brightness Control File Path below (as per your chip/device)
 #TW_BRIGHTNESS_PATH := /sys/class/leds/lcd-backlight/brightness
 #TW_SECONDARY_BRIGHTNESS_PATH := /sys/devices/platform/leds-mt65xx/leds/lcd-backlight/brightness
