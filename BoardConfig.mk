@@ -31,13 +31,16 @@ TW_EXCLUDE_SUPERSU := true                    # true/false: Add SuperSU or not
 TW_INCLUDE_CRYPTO := true                     # true/false: Add Data Encryption Support or not
 TW_INPUT_BLACKLIST := "hbtp_vm"               # Optional: Disables virtual mouse
 TW_SCREEN_BLANK_ON_BOOT := true
-# TW_THEME := landscape_hdpi                     # Set the exact theme you wanna use. If resulation doesn't match, define the height/width
+
+bootable/recovery/gui/Android.mk
+
+TW_THEME := landscape_hdpi                     # Set the exact theme you wanna use. If resulation doesn't match, define the height/width
 # ****************************************************************************
 # 1010  Could not find ui.xml for TW_THEME: 
 # 1011  Set TARGET_SCREEN_WIDTH and TARGET_SCREEN_HEIGHT to automatically select
 # 1012  an appropriate theme, or set TW_THEME to one of the following:
 # 1013    landscape_hdpi landscape_mdpi portrait_hdpi portrait_mdpi watch_mdpi
-# DEVICE_RESOLUTION := 1280x720                 # The Resolution of your Device
+DEVICE_RESOLUTION := 1920x1200                 # The Resolution of your Device
 TARGET_SCREEN_WIDTH := 1920
 TARGET_SCREEN_HEIGHT := 1200
 # TARGET_RECOVERY_PIXEL_FORMAT := "RGBA_8888"
