@@ -29,9 +29,7 @@ script:
     cd /home/builder/twrp/
     export ALLOW_MISSING_DEPENDENCIES=true
     source build/envsetup.sh
-    # Choose build flavor as "eng" or "userdebug"
-    BUILD_FLAVOR="eng"
-    lunch omni_sugarcane-${BUILD_FLAVOR}
+    lunch omni_sugarcane-eng
     mka recoveryimage
     exit
     EOF
