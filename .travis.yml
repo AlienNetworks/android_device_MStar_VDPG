@@ -1,6 +1,6 @@
 os: linux
 dist: focal
-language: generic
+language: minimal
 git:
   depth: 1
 services:
