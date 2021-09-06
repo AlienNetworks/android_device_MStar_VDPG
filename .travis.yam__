@@ -1,0 +1,59 @@
+os: linux
+dist: focal
+language: generic
+git:
+  depth: 1
+addons:
+  apt:
+    update:
+      - true
+    packages:
+      - aria2
+      - zstd
+      - xz-utils
+services:
+  - docker
+before_install:
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin 2>/dev/null
+  - docker pull fr3akyphantom/droid-builder:focal
+before_script:
+  - cd $HOME && mkdir twrp
+  - cd $HOME/twrp/ && init --depth=1 -u git://github.com/minimal-manifest-twrp/platform_manifest_twrp_omni.git -b twrp-8.1
+  - repo sync
+  - git clone https://github.com/AlienNetworks/android_device_MStar_VDPG.git device/MStar/sugarcane
+  - sudo chown -R 1000:1000 $HOME/twrp && sudo chmod -R 775 $HOME/twrp && sudo chmod -R g+s $HOME/twrp && sudo groupadd -g 1000 builder && sudo adduser travis builder  
+script:
+
+  - |
+    docker run --privileged --rm -i -v "$(pwd):/home/builder/twrp/:rw,z" -v "${HOME}/.ccache:/srv/ccache:rw" fr3akyphantom/droid-builder:focal bash << EOF
+    cd /home/builder/twrp/
+    export ALLOW_MISSING_DEPENDENCIES=true
+    source build/envsetup.sh
+    # Choose build flavor as "eng" or "userdebug"
+    BUILD_FLAVOR="eng"
+    lunch omni_sugarcane-${BUILD_FLAVOR}
+    mka recoveryimage
+    exit
+    EOF
+after_success:
+  - export version=$(cat bootable/recovery/variables.h | grep "define TW_MAIN_VERSION_STR" | cut -d '"' -f2)
+  - cp $HOME/twrp/out/target/product/sugarcane/recovery.img $HOME/twrp/TWRP-$version-sugarcane-$(date +"%Y%m%d")-Unofficial.img
+  - cd $HOME/twrp/
+  # Optional: You might need to switch from https://transfer.sh to https://file.io
+  # - curl -s --upload-file TWRP-$version-sugarcane-$(date +"%Y%m%d")-Unofficial.img https://transfer.sh/ && echo ""
+deploy:
+  provider: releases
+  token: $GitOAUTHToken
+  cleanup: false
+  file_glob: true
+  file: $HOME/twrp/*.img
+  on:
+    tags: false # Set "true" to deploy only on successful tagged commit builds
+    repo: AlienNetworks/android_device_MStar_VDPG # Optional: If you want to deploy on different repository
+    branch: main # Optional: Needs to be exact as the config branch
+branches:
+  only:
+    - main # Set travis builder branch(es) names
+  except:
+    - /^(?i:untagged)-.*$/
+    - /^v\d+\.\d+(\.\d+)?(-\S*)?$/
