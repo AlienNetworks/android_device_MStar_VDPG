@@ -21,17 +21,17 @@ RECOVERY_SDCARD_ON_DATA := true               # Optional: If /sdcard partition i
 # TWRP stuff
 TW_EXCLUDE_TWRPAPP := true
 TW_EXCLUDE_SUPERSU := true                    # true/false: Add SuperSU or not
-TW_INCLUDE_CRYPTO := true                     # true/false: Add Data Encryption Support or not
+TW_INCLUDE_CRYPTO := false                     # true/false: Add Data Encryption Support or not
 TW_INPUT_BLACKLIST := "hbtp_vm"               # Optional: Disables virtual mouse
 TW_SCREEN_BLANK_ON_BOOT := true
 TW_THEME := landscape_hdpi                    # Set the theme
 TARGET_RECOVERY_PIXEL_FORMAT := "RGBA_8888"
 TW_MAX_BRIGHTNESS := 100
 TW_DEFAULT_BRIGHTNESS := 100                  # Set custom brightness, low is better
-TW_INCLUDE_NTFS_3G := true                    # Include NTFS Filesystem Support
-TW_INCLUDE_FUSE_EXFAT := true                 # Include Fuse-ExFAT Filesystem Support
-TWRP_INCLUDE_LOGCAT := true                   # Include LogCat Binary
-TW_INCLUDE_FB2PNG := true                     # Include Screenshot Support
+TW_INCLUDE_NTFS_3G := false                    # Include NTFS Filesystem Support
+TW_INCLUDE_FUSE_EXFAT := false                 # Include Fuse-ExFAT Filesystem Support
+TWRP_INCLUDE_LOGCAT := false                   # Include LogCat Binary
+TW_INCLUDE_FB2PNG := false                     # Include Screenshot Support
 TW_DEFAULT_LANGUAGE := en                     # Set Default Language 
 TW_EXTRA_LANGUAGES := false
 
