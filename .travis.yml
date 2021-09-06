@@ -19,19 +19,13 @@ before_install:
 before_script:
   - cd $HOME && mkdir twrp
   - TWRP_SOURCE1="https://github.com/PhantomZone54/twrp_sources_norepo/releases/download/v3.5.0_9-20210130/MinimalOmniRecovery-twrp-8.1-norepo-20210130.tzst.aa" && TWRP_SOURCE2="https://github.com/PhantomZone54/twrp_sources_norepo/releases/download/v3.5.0_9-20210130/MinimalOmniRecovery-twrp-8.1-norepo-20210130.tzst.ab" && TWRP_SOURCE3="https://github.com/PhantomZone54/twrp_sources_norepo/releases/download/v3.5.0_9-20210130/MinimalOmniRecovery-twrp-8.1-norepo-20210130.tzst.ac"
-  - aria2c -x16 -s8 --console-log-level=error --summary-interval=0 "${TWRP_SOURCE1}" || wget -q --show-progress --progress=bar:force "${TWRP_SOURCE1}"
-  - wget -q --show-progress --progress=bar:force "${TWRP_SOURCE2}"
-  - wget -q --show-progress --progress=bar:force "${TWRP_SOURCE3}"
+  - wget -q --show-progress --progress=bar:force "${TWRP_SOURCE1}" && wget -q --show-progress --progress=bar:force "${TWRP_SOURCE2}" && wget -q --show-progress --progress=bar:force "${TWRP_SOURCE3}"
   - cat MinimalOmniRecovery-twrp-*.*-norepo-2021*.tzst.ab MinimalOmniRecovery-twrp-*.*-norepo-2021*.tzst.ac >> MinimalOmniRecovery-twrp-*.*-norepo-2021*.tzst.aa
   - tar --zstd -xf MinimalOmniRecovery-twrp-*.*-norepo-2021*.tzst.aa --directory $HOME/twrp/ && rm MinimalOmniRecovery*.tzst.*
 script:
   - cd $HOME/twrp/ && git clone https://github.com/AlienNetworks/android_device_MStar_VDPG.git device/MStar/sugarcane
   - rm -rf bootable/recovery && git clone https://github.com/omnirom/android_bootable_recovery -b android-8.1 --depth 1 bootable/recovery
-  - sudo chown -R 1000:1000 $HOME/twrp
-  - sudo chmod -R 775 $HOME/twrp
-  - sudo chmod -R g+s $HOME/twrp
-  - sudo groupadd -g 1000 builder
-  - sudo adduser travis 1000
+  - sudo chown -R 1000:1000 $HOME/twrp && sudo chmod -R 775 $HOME/twrp && sudo chmod -R g+s $HOME/twrp && sudo groupadd -g 1000 builder && sudo adduser travis builder
   - |
     docker run --privileged --rm -i -v "$(pwd):/home/builder/twrp/:rw,z" -v "${HOME}/.ccache:/srv/ccache:rw" fr3akyphantom/droid-builder:focal bash << EOF
     cd /home/builder/twrp/
