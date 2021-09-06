@@ -16,7 +16,7 @@ before_script:
   - echo '    <project path="device/MStar/sugarcane" name="AlienNetworks/android_device_MStar_VDPG" remote="github" revision="main" />' >> ~/twrp/.repo/local_manifests/local_manifest.xml
   - echo '</manifest>' >> ~/twrp/.repo/local_manifests/local_manifest.xml
   - repo sync
-  - sudo chown -R 1000:1000 ~/twrp && sudo chmod -R 775 ~/twrp && sudo chmod -R g+s ~/twrp && chown -R 1000:1000 ~/.ccache && sudo chmod -R 775 ~/.ccache && sudo chmod -R g+s ~/.ccache && sudo groupadd -g 1000 builder && sudo adduser travis builder
+  - sudo chown -R 1000:1000 ~/twrp && sudo chmod -R 775 ~/twrp && sudo chmod -R g+s ~/twrp && sudo chown -R 1000:1000 ~/.ccache && sudo chmod -R 775 ~/.ccache && sudo chmod -R g+s ~/.ccache && sudo groupadd -g 1000 builder && sudo adduser travis builder
 script:
   - |
     docker run --privileged --rm -i -v "$(pwd):/home/builder/twrp/:rw,z" -v "${HOME}/.ccache:/srv/ccache:rw" fr3akyphantom/droid-builder:focal bash << EOF
