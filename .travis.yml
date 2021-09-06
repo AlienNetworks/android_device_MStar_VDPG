@@ -15,7 +15,6 @@ addons:
 services:
   - docker
 before_install:
-  - sudo -s
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin 2>/dev/null
   - docker pull fr3akyphantom/droid-builder:focal
 before_script:
