@@ -1,4 +1,4 @@
-LOCAL_PATH := device/MStar/sugarcane
+# LOCAL_PATH := device/MStar/sugarcane
 
 TARGET_BOARD_PLATFORM := m7221               # From ro.mediatek.platform, but lowercase value
 TARGET_NO_BOOTLOADER := true
@@ -31,15 +31,15 @@ TW_EXCLUDE_SUPERSU := true                    # true/false: Add SuperSU or not
 TW_INCLUDE_CRYPTO := true                     # true/false: Add Data Encryption Support or not
 TW_INPUT_BLACKLIST := "hbtp_vm"               # Optional: Disables virtual mouse
 TW_SCREEN_BLANK_ON_BOOT := true
-TW_THEME := landscape_hdpi                     # Set the exact theme you wanna use. If resulation doesn't match, define the height/width
+# TW_THEME := landscape_hdpi                     # Set the exact theme you wanna use. If resulation doesn't match, define the height/width
 # ****************************************************************************
 # 1010  Could not find ui.xml for TW_THEME: 
 # 1011  Set TARGET_SCREEN_WIDTH and TARGET_SCREEN_HEIGHT to automatically select
 # 1012  an appropriate theme, or set TW_THEME to one of the following:
 # 1013    landscape_hdpi landscape_mdpi portrait_hdpi portrait_mdpi watch_mdpi
-# DEVICE_RESOLUTION := 720x1280                 # The Resolution of your Device
-# TARGET_SCREEN_HEIGHT := 720                     # The height
-# TARGET_SCREEN_WIDTH := 1280                     # The width
+DEVICE_RESOLUTION := 1280x720                 # The Resolution of your Device
+TARGET_SCREEN_WIDTH := 1280                     # The width
+TARGET_SCREEN_HEIGHT := 720                     # The height
 TARGET_RECOVERY_PIXEL_FORMAT := "RGBA_8888"
 # Set the Brightness Control File Path below (as per your chip/device)
 #TW_BRIGHTNESS_PATH := /sys/class/leds/lcd-backlight/brightness
@@ -51,7 +51,7 @@ TW_MAX_BRIGHTNESS := 100
 TW_DEFAULT_BRIGHTNESS := 100                   # Set custom brightness, low is better
 
 # On some device, TWRP backup folder name will show 0000000000 bcos cpuinfo has no serial number. Using this flag then it will use ro.product.model as the folder name instead of all 0000000000
-TW_USE_MODEL_HARDWARE_ID_FOR_DEVICE_ID := true
+# TW_USE_MODEL_HARDWARE_ID_FOR_DEVICE_ID := true
 
 TW_INCLUDE_NTFS_3G := true                    # Include NTFS Filesystem Support
 TW_INCLUDE_FUSE_EXFAT := true                 # Include Fuse-ExFAT Filesystem Support
@@ -78,7 +78,7 @@ TARGET_USES_64_BIT_BINDER := true             # Remove if the device is 32-bit
 
 # Architecture
 # According to the device's architecture (64-bit or 32-bit)
-ifeq ($(TARGET_IS_64_BIT),true)
+##  ifeq ($(TARGET_IS_64_BIT),true)
 TARGET_ARCH := arm64
 TARGET_ARCH_VARIANT := armv8-a
 TARGET_CPU_ABI := arm64-v8a
@@ -92,11 +92,11 @@ TARGET_2ND_CPU_VARIANT := cortex-a53         # Change the value to "generic" if 
 TARGET_CPU_ABI_LIST_64_BIT := $(TARGET_CPU_ABI)
 TARGET_CPU_ABI_LIST_32_BIT := $(TARGET_2ND_CPU_ABI),$(TARGET_2ND_CPU_ABI2)
 TARGET_CPU_ABI_LIST := $(TARGET_CPU_ABI_LIST_64_BIT),$(TARGET_CPU_ABI_LIST_32_BIT)
-else
-TARGET_ARCH := arm
-TARGET_ARCH_VARIANT := armv7-a-neon
-TARGET_CPU_ABI := armeabi-v7a
-TARGET_CPU_ABI2 := armeabi
-TARGET_CPU_VARIANT := cortex-a7              # Change the value to "generic" if build fails suddenly due to arch error
-TARGET_CPU_ABI_LIST := $(TARGET_CPU_ABI),$(TARGET_CPU_ABI2)
-endif
+# else
+# TARGET_ARCH := arm
+# TARGET_ARCH_VARIANT := armv7-a-neon
+# TARGET_CPU_ABI := armeabi-v7a
+# TARGET_CPU_ABI2 := armeabi
+# TARGET_CPU_VARIANT := cortex-a7              # Change the value to "generic" if build fails suddenly due to arch error
+# TARGET_CPU_ABI_LIST := $(TARGET_CPU_ABI),$(TARGET_CPU_ABI2)
+# endif
