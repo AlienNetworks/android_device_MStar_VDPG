@@ -28,6 +28,7 @@ $(call inherit-product, device/MStar/sugarcane/device.mk)
 # $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base.mk)
 # $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 PRODUCT_COPY_FILES += device/MStar/sugarcane/prebuilt/Image.gz-dtb:kernel
+PRODUCT_COPY_FILES += device/MStar/sugarcane/recovery/root/*:root/*
 
 ## Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := sugarcane
