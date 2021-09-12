@@ -14,6 +14,6 @@
 # limitations under the License.
 #
 
-LOCAL_PATH := device/MStar/sugarcane
+#LOCAL_PATH := device/MStar/sugarcane
 
-PRODUCT_MAKEFILES := $(LOCAL_PATH)/omni_sugarcane.mk
+PRODUCT_MAKEFILES := $(LOCAL_DIR)/omni_sugarcane.mk
