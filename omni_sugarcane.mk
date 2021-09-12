@@ -32,15 +32,15 @@ PRODUCT_RELEASE_NAME := sugarcane
 # PRODUCT_COPY_FILES += device/MStar/sugarcane/recovery/root/*:root/*
 ###
 
-$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base.mk)
+$(call inherit-product, build/target/product/full_base.mk)
 
 # Add this line if your device is 64-bit
-$(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
+$(call inherit-product, build/target/product/core_64_bit.mk)
 # Otherwise, If you have 32-bit device, add the below line instead of above line
-$(call inherit-product, $(SRC_TARGET_DIR)/product/core_minimal.mk
+#$(call inherit-product, build/target/product/core_minimal.mk
 
 # Another common config inclusion
-$(call inherit-product, $(SRC_TARGET_DIR)/product/embedded.mk)
+$(call inherit-product, build/target/product/embedded.mk)
 
 # If you are building from OmniROM's minimal source, Inherit some common Omni stuff.
 $(call inherit-product, vendor/omni/config/common.mk)
