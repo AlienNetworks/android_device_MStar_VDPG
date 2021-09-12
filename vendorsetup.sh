@@ -1,2 +1,0 @@
-add_lunch_combo omni_sugarcane-eng
-add_lunch_combo omni_sugarcane-userdebug
