@@ -17,18 +17,41 @@
 # Release name
 PRODUCT_RELEASE_NAME := sugarcane
 
-$(call inherit-product, build/target/product/embedded.mk)
+###
+#$(call inherit-product, build/target/product/embedded.mk)
 
 # Inherit from our custom product configuration
-$(call inherit-product, vendor/omni/config/common.mk)
+#$(call inherit-product, vendor/omni/config/common.mk)
 
 # Inherit from hardware-specific part of the product configuration
-$(call inherit-product, device/MStar/sugarcane/device.mk)
+#$(call inherit-product, device/MStar/sugarcane/device.mk)
 
 # $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base.mk)
 # $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
-PRODUCT_COPY_FILES += device/MStar/sugarcane/prebuilt/Image.gz-dtb:kernel
+#PRODUCT_COPY_FILES += device/MStar/sugarcane/prebuilt/Image.gz-dtb:kernel
 # PRODUCT_COPY_FILES += device/MStar/sugarcane/recovery/root/*:root/*
+###
+
+$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base.mk)
+
+# Add this line if your device is 64-bit
+$(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
+# Otherwise, If you have 32-bit device, add the below line instead of above line
+$(call inherit-product, $(SRC_TARGET_DIR)/product/core_minimal.mk
+
+# Another common config inclusion
+$(call inherit-product, $(SRC_TARGET_DIR)/product/embedded.mk)
+
+# If you are building from OmniROM's minimal source, Inherit some common Omni stuff.
+$(call inherit-product, vendor/omni/config/common.mk)
+
+# Replace $$DEVICE$$ with your Device Name's Value.
+# Replace $$BRAND$$ with your Brand's / Manufacturer's Value.
+#PRODUCT_COPY_FILES += device/$$BRAND$$/$$DEVICE$$/prebuilt/zImage:kernel
+PRODUCT_COPY_FILES += device/MStar/sugarcane/prebuilt/Image.gz-dtb:kernel
+# Fles under $(LOCAL_PATH)/recovery/root/ gets automatically copied into recovery
+# PRODUCT_COPY_FILES += $(LOCAL_PATH)/recovery/root/*:root/*
+
 
 ## Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := sugarcane
