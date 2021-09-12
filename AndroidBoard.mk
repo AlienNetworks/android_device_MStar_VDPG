@@ -23,7 +23,17 @@
 # *not* include it on all devices, so it is safe even with hardware-specific
 # components.
 
-ifneq ($(filter sugarcane,$(TARGET_DEVICE)),)
-LOCAL_PATH := device/MStar/sugarcane
+LOCAL_PATH := $(call my-dir)
+
+ifeq ($(TARGET_DEVICE),sugarcane)
+
 include $(call all-makefiles-under,$(LOCAL_PATH))
+
+include $(CLEAR_VARS)
+
 endif
+
+##ifneq ($(filter sugarcane,$(TARGET_DEVICE)),)
+#LOCAL_PATH := device/MStar/sugarcane
+#include $(call all-makefiles-under,$(LOCAL_PATH))
+#endif
