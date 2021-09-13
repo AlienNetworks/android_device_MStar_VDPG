@@ -39,6 +39,7 @@ before_install:
   - echo '</manifest>' >> ~/twrp/.repo/local_manifests/local_manifest.xml
   - repo sync
 before_script:
+  - export LC_ALL=C 
   - export ALLOW_MISSING_DEPENDENCIES=true
   - source build/envsetup.sh
   - lunch omni_sugarcane-userdebug
