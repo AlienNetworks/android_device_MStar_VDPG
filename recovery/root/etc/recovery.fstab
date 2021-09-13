@@ -1,8 +1,7 @@
 # Mount point		FStype					Device													Flags
 
 /system              ext4        /dev/block/platform/mstar_mci.0/by-name/system               /dev/block/mmcblk0p12     flags=display="System";backup=1;canbewiped;wipeingui
-/system              ext4        /dev/block/platform/mstar_mci.0/by-name/system               /dev/block/mmcblk0p12     flags=display="System";backup=1;canbewiped;wipeingui
-/data                ext4        /dev/block/platform/mstar_mci.0/by-name/userdata             /dev/block/mmcblk0p13     flags=length=-16384;display="Data";backup=1;canbewiped;wipeingui;wipeduringfactoryreset;settingsstorage
+/data                ext4        /dev/block/platform/mstar_mci.0/by-name/userdata             /dev/block/mmcblk0p13     flags=display="Data";backup=1;canbewiped;wipeingui;wipeduringfactoryreset;settingsstorage
 /cache               ext4        /dev/block/platform/mstar_mci.0/by-name/cache                /dev/block/mmcblk0p14
 /vendor              ext4        /dev/block/platform/mstar_mci.0/by-name/vendor               /dev/block/mmcblk0p15
 /tvservice           ext4        /dev/block/platform/mstar_mci.0/by-name/tvservice            /dev/block/mmcblk0p16
