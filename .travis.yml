@@ -48,7 +48,6 @@ script:
 after_success:
   - export version=$(cat bootable/recovery/variables.h | grep "define TW_MAIN_VERSION_STR" | cut -d '"' -f2)
   - cp $HOME/twrp/out/target/product/sugarcane/recovery.img $HOME/twrp/TWRP-$version-sugarcane-$(date +"%Y%m%d")-Unofficial.img
-  - cd $HOME/twrp/
 deploy:
   provider: releases
   token: $GitOAUTHToken
