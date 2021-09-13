@@ -49,8 +49,6 @@ after_success:
   - export version=$(cat bootable/recovery/variables.h | grep "define TW_MAIN_VERSION_STR" | cut -d '"' -f2)
   - cp $HOME/twrp/out/target/product/sugarcane/recovery.img $HOME/twrp/TWRP-$version-sugarcane-$(date +"%Y%m%d")-Unofficial.img
   - cd $HOME/twrp/
-  # Optional: You might need to switch from https://transfer.sh to https://file.io
-  # - curl -s --upload-file TWRP-$version-sugarcane-$(date +"%Y%m%d")-Unofficial.img https://transfer.sh/ && echo ""
 deploy:
   provider: releases
   token: $GitOAUTHToken
@@ -58,7 +56,7 @@ deploy:
   file_glob: true
   file: $HOME/twrp/*.img
   on:
-    tags: false # Set "true" to deploy only on successful tagged commit builds
+    tags: true # Set "true" to deploy only on successful tagged commit builds
     repo: AlienNetworks/android_device_MStar_VDPG # Optional: If you want to deploy on different repository
     branch: main # Optional: Needs to be exact as the config branch
 branches:
