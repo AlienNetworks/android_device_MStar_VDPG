@@ -27,6 +27,8 @@ addons:
     - openjdk-8-jdk
     - python
 language: shell
+git:
+  depth: false
 before_install:
   - mkdir -p ~/.bin && PATH="${HOME}/.bin:${PATH}" && curl https://storage.googleapis.com/git-repo-downloads/repo > ~/.bin/repo && chmod a+rx ~/.bin/repo && mkdir -p ~/twrp && mkdir -p ~/.ccache && cd ~/twrp
   - repo init --depth=1 -u git://github.com/minimal-manifest-twrp/platform_manifest_twrp_omni.git -b twrp-8.1
